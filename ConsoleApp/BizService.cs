@@ -57,6 +57,7 @@ namespace ConsoleApp
 
             Thread.Sleep(1000);
 
+            //この行がない場合は、Ctro+Cで終了となります。
             _appLifetime.StopApplication(); // 自動でアプリケーションを終了させる
         }
     }

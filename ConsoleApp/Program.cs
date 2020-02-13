@@ -56,6 +56,7 @@ namespace ConsoleApp
 			{
 				Log.Information("Starting host");
 				host.Run();
+				
 				return 0;
 			}
 			catch (Exception ex)
