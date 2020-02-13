@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "name": ".NET Core Launch (console)",
+      "ÅEÅEÅE": null,
+      // í«â¡
+      "env": {
+        "DOTNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  ]
+}
