@@ -18,5 +18,5 @@ fdfd</p>
 <blockquote>
 <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
 </blockquote>
-<p><img src="https://drive.google.com/file/d/1kgier8pALsK_UxcGUQu6usPwXraXUp7k/view" alt="enter image description here"></p>
+<p><img src="http://drive.google.com/uc?export=view&amp;id=1kgier8pALsK_UxcGUQu6usPwXraXUp7k" alt="enter image description here"></p>
 
