@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;    
 using System.Threading.Tasks;
 using System.Text;
+using System.Text.Encodings.Web;
 
 namespace WebApiApp.Middlewarre
 {
@@ -34,16 +35,26 @@ namespace WebApiApp.Middlewarre
         {
             int statusCode = (exception is ApplicationException) ? 220 : (int)HttpStatusCode.InternalServerError;
             //context.Response.ContentType = "application/json";
+
+
             //var result = JsonConvert.SerializeObject(new
             //↓
+            //https://www.terry-u16.net/entry/system-text-json
+            var options = new JsonSerializerOptions
+            {
+                // JavaScriptEncoder.Createでエンコードしない文字を指定するのも可
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                // 読みやすいようインデントを付ける
+                WriteIndented = true
+            };
             var result = JsonSerializer.Serialize(new
             {
                 StatusCode = statusCode,
                 ErrorMessage = exception.Message
-            });
+            }, options);
             context.Response.ContentType = "application/json; charset=utf-8";
             context.Response.StatusCode = statusCode;
-            return context.Response.WriteAsync(result, Encoding.UTF8);
+            return context.Response.WriteAsync(result);
         }
     }
 }
