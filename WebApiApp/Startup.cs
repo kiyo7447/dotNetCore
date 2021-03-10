@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using WebApiApp.Middlewarre;
 
 namespace WebApiApp
 {
@@ -46,6 +46,8 @@ namespace WebApiApp
 				app.UseSwagger();
 				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiApp v1"));
 			}
+
+			app.UseExceptionHandlerMiddleware();
 
 			app.UseHttpsRedirection();
 
