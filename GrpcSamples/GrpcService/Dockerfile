@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["WebApiApp/WebApiApp.csproj", "WebApiApp/"]
-RUN dotnet restore "WebApiApp/WebApiApp.csproj"
+COPY ["GrpcService/GrpcService.csproj", "GrpcService/"]
+RUN dotnet restore "GrpcService/GrpcService.csproj"
 COPY . .
-WORKDIR "/src/WebApiApp"
-RUN dotnet build "WebApiApp.csproj" -c Release -o /app/build
+WORKDIR "/src/GrpcService"
+RUN dotnet build "GrpcService.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "WebApiApp.csproj" -c Release -o /app/publish
+RUN dotnet publish "GrpcService.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "WebApiApp.dll"]
+ENTRYPOINT ["dotnet", "GrpcService.dll"]

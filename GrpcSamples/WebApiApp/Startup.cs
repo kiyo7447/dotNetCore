@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApiApp.Services;
 using WebApiApp.Middlewarre;
 
 namespace WebApiApp
@@ -29,6 +30,10 @@ namespace WebApiApp
 		{
 
 			services.AddControllers();
+
+			//gRPC‚ð’Ç‰Á
+			services.AddGrpc();
+
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApiApp", Version = "v1" });
@@ -58,6 +63,9 @@ namespace WebApiApp
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
+				
+				//gRPC Servcie‚ð’Ç‰Á
+				endpoints.MapGrpcService<GreeterService>();
 			});
 		}
 	}
