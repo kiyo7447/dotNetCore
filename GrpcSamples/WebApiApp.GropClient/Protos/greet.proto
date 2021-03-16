@@ -12,6 +12,20 @@ message HelloRequest {
   string name = 1;
 }
 
+message Hello {
+	string message = 1;
+}
+
+enum ResultStatus{
+	OK=0;
+	FUNCTION_ERROR=1;
+	WARNING_ERROR=2;
+	SYSTEM_ERROR=3;
+}
+
 message HelloReply {
-  string message = 1;
+	ResultStatus result_status=1;
+	string error_message=2;
+
+	Hello hello = 3;
 }

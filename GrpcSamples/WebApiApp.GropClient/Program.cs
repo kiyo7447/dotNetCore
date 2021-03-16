@@ -13,8 +13,8 @@ namespace WebApiApp.GropClient
 			try
 			{
 #if true
-			//元のソース
-			var channel = GrpcChannel.ForAddress("https://localhost:5001");
+				//元のソース
+				var channel = GrpcChannel.ForAddress("https://localhost:5001");
 #else
 				//リクエストのタイムアウトを設定
 				Console.WriteLine("Hello World!");
@@ -47,7 +47,21 @@ namespace WebApiApp.GropClient
 			var response = await client.SayHelloAsync(
 				new HelloRequest { Name = "World" }, deadline: DateTime.UtcNow.AddSeconds(30));
 #endif
-				Console.WriteLine(response.Message);
+				if (response.ResultStatus == ResultStatus.Ok)
+				{
+					Console.WriteLine(response.Hello.Message);
+				}
+				else if (response.ResultStatus == ResultStatus.FunctionError)
+				{
+					Console.WriteLine(response.ErrorMessage);
+
+				}
+				else
+				{
+					Console.WriteLine(response.ErrorMessage);
+
+				}
+
 
 			}
 			catch (Exception ex)

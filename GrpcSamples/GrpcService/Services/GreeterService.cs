@@ -31,9 +31,23 @@ namespace GrpcService
 
 			_logger.LogInformation($"Begin End");
 
-			return Task.FromResult(new HelloReply
+/*
+			Metadata trailers = new Metadata();
+			trailers.Add("error_code", "01001");
+			trailers.Add("error_message", "エラーメッセージです。");
+
+			throw new RpcException(
+				new Status(Grpc.Core.StatusCode.OK, "業務エラーです。")
+				, trailers
+			);
+*/
+/*
+			throw new SystemException("システムエラーが発生しました。");
+
+*/			return Task.FromResult(new HelloReply
 			{
-				Message = "Hello " + request.Name
+				ResultStatus = ResultStatus.Ok,
+				Hello = new Hello { Message = "Hello " + request.Name }
 			});
 		}
 	}
