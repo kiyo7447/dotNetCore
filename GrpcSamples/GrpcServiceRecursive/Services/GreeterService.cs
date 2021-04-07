@@ -1,6 +1,6 @@
 using Grpc.Core;
 using Grpc.Net.Client;
-using GrpcHelloer;
+using HelloService;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -18,6 +18,20 @@ namespace GreetService
 			_logger = logger;
 		}
 
+		public override Task<HelloReply> SayHello2(HelloRequest request, ServerCallContext context)
+		{
+			var httpContext = context.GetHttpContext();
+			var c = httpContext.Request.Headers.Count;
+
+			_logger.LogInformation($"HttpContext.Request.Headers.Count:{c}");
+
+			return Task.FromResult(new HelloReply
+			{
+				ResultStatus = ResultStatus.Ok,
+				Hello = new Hello { Message = "Greeter.SayHello2:" + request.Name }
+			});
+		}
+
 		public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
 		{
 			var httpContext = context.GetHttpContext();
@@ -25,6 +39,7 @@ namespace GreetService
 
 			_logger.LogInformation($"HttpContext.Request.Headers.Count:{c}");
 
+			var msg = request.Name;
 			try
 			{
 				//元のソース
@@ -32,16 +47,36 @@ namespace GreetService
 				var client = new Helloer.HelloerClient(channel);
 				//元のソース
 				var response = client.SayHello(
-					new GrpcHelloer.HelloRequest { Name = "World" });
+					new HelloService.HelloRequest { Name = msg});
+
+				msg = response.Hello.Message;
+
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				throw new SystemException("", ex);
 			}
-				return Task.FromResult(new HelloReply
+			try
+			{
+				//元のソース
+				var channel = GrpcChannel.ForAddress("https://localhost:5001");
+				var client = new Greeter.GreeterClient(channel);
+				//元のソース
+				var response = client.SayHello2(
+					new HelloRequest { Name = msg });
+
+				msg = response.Hello.Message;
+			}
+			catch (Exception ex)
+			{
+				throw new SystemException("", ex);
+
+			}
+
+			return Task.FromResult(new HelloReply
 			{
 				ResultStatus = ResultStatus.Ok,
-				Hello = new Hello { Message = "Hello " + request.Name }
+				Hello = new Hello { Message = "Greeter.SayHello:" + msg }
 			});
 		}
 	}

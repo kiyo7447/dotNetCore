@@ -41,7 +41,7 @@ namespace WebApiApp.GropClient
 #if true
 				//元のソース
 				var response = await client.SayHelloAsync(
-					new HelloRequest { Name = "World" });
+					new HelloRequest { Name = "{gRPCClient}" });
 #else
 			//クライアントタイムアウトを設定
 			var response = await client.SayHelloAsync(

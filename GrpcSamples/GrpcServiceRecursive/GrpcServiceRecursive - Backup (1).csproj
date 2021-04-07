@@ -8,17 +8,19 @@
 
   <ItemGroup>
     <None Remove="Protos\greetClient.proto" />
-    <None Remove="Protos\hello.proto" />
     <None Remove="Protos\helloClient.proto" />
+    <None Remove="Protos\helloServer.proto" />
   </ItemGroup>
 
   <ItemGroup>
     <Protobuf Include="Protos\greet.proto" />
+    <Protobuf Include="Protos\hello.proto" />
 <!--
+    <Protobuf Include="Protos\greetServer.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\helloServer.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\greetServer.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\helloServer.proto" GrpcServices="Client" />
 -->
-    <Protobuf Include="Protos\hello.proto" />
   </ItemGroup>
 
   <ItemGroup>

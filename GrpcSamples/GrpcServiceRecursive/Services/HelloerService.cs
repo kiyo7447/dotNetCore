@@ -26,7 +26,7 @@ namespace HelloService
 			return Task.FromResult(new HelloReply
 			{
 				ResultStatus = ResultStatus.Ok,
-				Hello = new Hello { Message = "Hello " + request.Name }
+				Hello = new Hello { Message = "Helloer.SayHello:" + request.Name }
 			});
 		}
 	}
