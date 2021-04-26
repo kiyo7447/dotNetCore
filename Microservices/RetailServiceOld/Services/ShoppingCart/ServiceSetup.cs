@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ShoppingCart.Microservices.ShoppingCart
+namespace RetailService.Services.ShoppingCart
 {
-	public class MicroserviceSetup
+	public class ServiceSetup
 	{
+
 	}
 }

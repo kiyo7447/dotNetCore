@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\ShoppingCart\Logic\" />
+    <Folder Include="Services\ShoppingCart\Models\" />
+    <Folder Include="Services\ShoppingCart\Data\" />
+  </ItemGroup>
+
+</Project>

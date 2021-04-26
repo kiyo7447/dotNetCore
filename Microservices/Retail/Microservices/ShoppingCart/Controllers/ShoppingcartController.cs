@@ -11,7 +11,7 @@ namespace Retail.Microservices.ShoppingCart.Controllers
     [Route("/shoppingcart")]
     public class ShoppingCartController : Controller
     {
-        private readonly IShoppingCartStore shoppingCartStore;
+/*        private readonly IShoppingCartStore shoppingCartStore;
 
         public ShoppingCartController(IShoppingCartStore shoppingCartStore)
         {
@@ -21,6 +21,6 @@ namespace Retail.Microservices.ShoppingCart.Controllers
         [HttpGet("{userId:int}")]
         public ShoppingCart Get(int userId) =>
           this.shoppingCartStore.Get(userId);
-    }
+*/    }
 }
 

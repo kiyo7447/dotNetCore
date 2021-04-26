@@ -69,7 +69,7 @@ namespace ConsoleApp
 			{
 				Log.CloseAndFlush();
 			}
-			Console.ReadKey();
+			//Console.ReadKey();
 		}
 	}
 }

@@ -18,6 +18,13 @@ namespace Retail
         {
             //REST Controller‚ð’Ç‰Á
             services.AddConnections();
+
+            //
+            services.Scan(selector =>
+        selector
+          .FromAssemblyOf<Startup>()
+          .AddClasses()
+          .AsImplementedInterfaces());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
