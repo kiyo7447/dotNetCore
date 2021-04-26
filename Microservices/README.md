@@ -18,6 +18,7 @@ select @@VERSION
 
 # キャッシュの作成
 
+
 # RabbitMQの作成
 
 
@@ -60,4 +61,12 @@ select @@VERSION
 
 ## ライセンス管理
 
+
+# DI Framework
+## C#のDIコンテナ
+- Autofac
+- Lamar
+- Unity
+- Ninject
+- Simple Injector
 

@@ -9,9 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\ShoppingCart\Logic\" />
-    <Folder Include="Services\ShoppingCart\Models\" />
-    <Folder Include="Services\ShoppingCart\Data\" />
+    <Folder Include="Middlewre\" />
   </ItemGroup>
 
 </Project>
